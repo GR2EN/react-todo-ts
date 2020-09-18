@@ -1,0 +1,28 @@
+.icon-button {
+  flex: 0 0 auto;
+  padding: 12px;
+  overflow: visible;
+  text-align: center;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  &--primary {
+    color: rgba(46, 134, 171, 0.92);
+
+    &:hover {
+      background-color: rgba(46, 134, 171, 0.04);
+    }
+  }
+
+  &--secondary {
+    color: rgba(16, 20, 25, 0.6);
+
+    &:hover {
+      background-color: rgba(16, 20, 25, 0.04);
+    }
+  }
+}
