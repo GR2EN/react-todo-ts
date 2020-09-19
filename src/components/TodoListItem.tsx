@@ -2,16 +2,11 @@ import React from 'react';
 
 import classNames from 'classnames';
 
+import { ITodo } from '../store/todo/contracts/state';
 import { IconButton } from './IconButton';
 import { SvgIcon } from './SvgIcon';
 
-export interface TodoListItemProps {
-  id?: number;
-  text: string;
-  completed: boolean;
-}
-
-export const TodoListItem: React.FC<TodoListItemProps> = ({
+const TodoListItem: React.FC<ITodo> = ({
   text,
   completed,
 }) => (
@@ -40,3 +35,5 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
     </div>
   </li>
 );
+
+export default TodoListItem;

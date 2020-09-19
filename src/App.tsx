@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Todo } from './components/Todo';
-import { TodoListItemProps } from './components/TodoListItem';
+import { RootState } from './store/rootReducer';
+import { thunkFetchTodos } from './store/todo/thunks';
 
 const App: React.FC = () => {
-  const items: Array<TodoListItemProps> = [
-    { id: 0, text: 'Create React project', completed: true },
-    { id: 1, text: 'Draw UI template', completed: true },
-    { id: 2, text: 'Add typification in App', completed: true },
-    { id: 3, text: 'Add components logic', completed: false },
-  ];
+  const items = useSelector((state: RootState) => state.todo.items);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(thunkFetchTodos());
+  }, [dispatch]);
 
   return (
     <div className="container">

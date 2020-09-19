@@ -1,11 +1,12 @@
 import React from 'react';
 
+import { ITodo } from '../store/todo/contracts/state';
 import { TodoAddField } from './TodoAddField';
-import { TodoListItem, TodoListItemProps } from './TodoListItem';
+import TodoListItem from './TodoListItem';
 
 export interface TodoProps {
   title: string;
-  items: Array<TodoListItemProps>;
+  items: ITodo[];
 }
 
 export const Todo: React.FC<TodoProps> = ({ title, items }) => (
@@ -15,7 +16,8 @@ export const Todo: React.FC<TodoProps> = ({ title, items }) => (
       <TodoAddField placeholder="What about another great thing?.." />
       <ul className="todo__list">
         {items.map(({ id, text, completed }) => (
-          <TodoListItem completed={completed} key={id} text={text} />
+          <TodoListItem completed={completed} id={id} key={id}
+            text={text} />
         ))}
       </ul>
     </div>
