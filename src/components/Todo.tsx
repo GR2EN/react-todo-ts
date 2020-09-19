@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import { ITodo } from '../store/todo/contracts/state';
 import { TodoAddField } from './TodoAddField';
 import TodoListItem from './TodoListItem';
 
-export interface TodoProps {
+export interface Todo {
   title: string;
   items: ITodo[];
 }
 
-export const Todo: React.FC<TodoProps> = ({ title, items }) => (
+export const Todo: React.FC<Todo> = ({ title, items }): ReactElement => (
   <div className="todo">
     <h4 className="todo__title">{title}</h4>
     <div className="todo__content">

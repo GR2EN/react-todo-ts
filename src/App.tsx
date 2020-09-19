@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Todo } from './components/Todo';
 import { RootState } from './store/rootReducer';
 import { thunkFetchTodos } from './store/todo/thunks';
 
-const App: React.FC = () => {
+const App: React.FC = (): ReactElement => {
   const items = useSelector((state: RootState) => state.todo.items);
   const dispatch = useDispatch();
 

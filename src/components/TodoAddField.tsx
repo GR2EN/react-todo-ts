@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import { IconButton } from './IconButton';
 import { SvgIcon } from './SvgIcon';
 
-export interface TodoAddFieldProps {
+export interface TodoAddField {
   placeholder: string;
 }
 
-export const TodoAddField: React.FC<TodoAddFieldProps> = ({ placeholder }) => (
+export const TodoAddField: React.FC<TodoAddField> = ({ placeholder }): ReactElement => (
   <div className="todo__add-field">
     <input
       className="todo__add-field-input"

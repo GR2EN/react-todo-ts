@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import classNames from 'classnames';
 
@@ -9,7 +9,7 @@ import { SvgIcon } from './SvgIcon';
 const TodoListItem: React.FC<ITodo> = ({
   text,
   completed,
-}) => (
+}): ReactElement => (
   <li
     className={classNames('todo__list-item', {
       'todo__list-item--completed': completed,

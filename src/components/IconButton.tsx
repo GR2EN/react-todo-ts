@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import classNames from 'classnames';
 
 import { ButtonColor } from './Button';
 
-export interface IIconButton {
+export interface IconButton {
   children: React.ReactElement | React.ReactElement[];
   color?: ButtonColor;
   onClick?: | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
 }
 
-export const IconButton: React.FC<IIconButton> = ({
+export const IconButton: React.FC<IconButton> = ({
  children, color, onClick
-}) => (
+}): ReactElement => (
   <button
     className={classNames(
       'button-base',
