@@ -4,10 +4,7 @@ import { ITodo } from "../../store/todo/contracts/state";
 
 const TodoApi = {
   async fetchTodos(): Promise<ITodo[]> {
-    return axios
-      .get('/todos')
-      .then(({ data }) => data)
-      .catch((err) => err.message);
+    return axios.get('/todos').then(({ data }) => data);
   }
 };
 
