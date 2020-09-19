@@ -1,14 +1,14 @@
 import { TodoActions, TodoActionTypes } from './actionCreators';
-import { ITodoState, LoadingState } from './contracts/state';
+import { LoadingState, TodoState } from './contracts/state';
 
-const initialTodoState: ITodoState = {
+const initialTodoState: TodoState = {
   items: [],
   loadingState: LoadingState.NEVER,
 };
 
-const todo = (state = initialTodoState, action: TodoActions): ITodoState => {
+const todo = (state = initialTodoState, action: TodoActions): TodoState => {
   switch (action.type) {
-    case TodoActionTypes.SET_TODOS: {
+    case TodoActionTypes.SET_TODO_ITEMS: {
       return {
         ...state,
         items: action.payload,
@@ -16,7 +16,7 @@ const todo = (state = initialTodoState, action: TodoActions): ITodoState => {
       }
     }
 
-    case TodoActionTypes.FETCH_TODOS: {
+    case TodoActionTypes.FETCH_TODO_ITEMS: {
       return {
         ...state,
         items: [],

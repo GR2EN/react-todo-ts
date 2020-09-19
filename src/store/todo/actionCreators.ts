@@ -1,37 +1,37 @@
 import { Action } from 'redux';
 
-import { ITodo } from './contracts/state';
+import { Todo } from './contracts/state';
 
 export enum TodoActionTypes {
-  SET_TODOS = 'todos/SET_TODOS',
-  FETCH_TODOS = 'todos/FETCH_TODOS',
-  FETCH_ERROR = 'todos/FETCH_ERROR',
+  SET_TODO_ITEMS = 'todo/SET_TODO_ITEMS',
+  FETCH_TODO_ITEMS = 'todo/FETCH_TODO_ITEMS',
+  FETCH_ERROR = 'todo/FETCH_ERROR',
 }
 
-export interface ISetTodosAction extends Action<TodoActionTypes> {
-  type: TodoActionTypes.SET_TODOS,
-  payload: ITodo[],
+export interface SetTodoItemsAction extends Action<TodoActionTypes> {
+  type: TodoActionTypes.SET_TODO_ITEMS,
+  payload: Todo[],
 }
 
-export interface IFetchTodosAction extends Action<TodoActionTypes> {
-  type: TodoActionTypes.FETCH_TODOS,
+export interface FetchTodoItemsAction extends Action<TodoActionTypes> {
+  type: TodoActionTypes.FETCH_TODO_ITEMS,
 }
 
-export interface IFetchErrorAction extends Action<TodoActionTypes> {
+export interface FetchTodoItemsErrorAction extends Action<TodoActionTypes> {
   type: TodoActionTypes.FETCH_ERROR,
 }
 
-export const setTodos = (payload: ITodo[]): ISetTodosAction => ({
-  type: TodoActionTypes.SET_TODOS,
+export const setTodoItems = (payload: Todo[]): SetTodoItemsAction => ({
+  type: TodoActionTypes.SET_TODO_ITEMS,
   payload,
 })
 
-export const fetchTodos = (): IFetchTodosAction => ({
-  type: TodoActionTypes.FETCH_TODOS,
+export const fetchTodoItems = (): FetchTodoItemsAction => ({
+  type: TodoActionTypes.FETCH_TODO_ITEMS,
 })
 
-export const fetchError = (): IFetchErrorAction => ({
+export const fetchError = (): FetchTodoItemsErrorAction => ({
   type: TodoActionTypes.FETCH_ERROR,
 })
 
-export type TodoActions = ISetTodosAction | IFetchTodosAction | IFetchErrorAction;
+export type TodoActions = SetTodoItemsAction | FetchTodoItemsAction | FetchTodoItemsErrorAction;

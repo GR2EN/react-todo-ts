@@ -1,5 +1,5 @@
 {
-  "todos": [
+  "todo": [
     { "id": 0, "text": "Create React project", "completed": true },
     { "id": 1, "text": "Draw UI template", "completed": true },
     { "id": 2, "text": "Add typification in App", "completed": true },

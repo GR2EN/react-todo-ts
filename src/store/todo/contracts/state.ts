@@ -5,13 +5,13 @@ export enum LoadingState {
   ERROR = 'ERROR',
 }
 
-export interface ITodo {
+export interface Todo {
   id: number;
   text: string;
   completed: boolean;
 };
 
-export interface ITodoState {
-  items: ITodo[];
+export interface TodoState {
+  items: Todo[];
   loadingState: LoadingState;
 };

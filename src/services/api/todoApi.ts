@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { ITodo } from "../../store/todo/contracts/state";
+import { Todo } from "../../store/todo/contracts/state";
 
 const TodoApi = {
-  async fetchTodos(): Promise<ITodo[]> {
-    return axios.get('/todos').then(({ data }) => data);
+  async fetchTodoItems(): Promise<Todo[]> {
+    return axios.get('/todo').then(({ data }) => data);
   }
 };
 

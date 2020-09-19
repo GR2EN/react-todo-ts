@@ -2,11 +2,11 @@ import React, { ReactElement } from 'react';
 
 import classNames from 'classnames';
 
-import { ITodo } from '../store/todo/contracts/state';
+import { Todo } from '../store/todo/contracts/state';
 import { IconButton } from './IconButton';
 import { SvgIcon } from './SvgIcon';
 
-const TodoListItem: React.FC<ITodo> = ({
+const TodoListItem: React.FC<Todo> = ({
   text,
   completed,
 }): ReactElement => (
