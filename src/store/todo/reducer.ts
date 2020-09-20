@@ -32,6 +32,13 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
       }
     }
 
+    case TodoActionTypes.ADD_TODO_ITEM: {
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+      }
+    }
+
     default: return state;
   }
 };
