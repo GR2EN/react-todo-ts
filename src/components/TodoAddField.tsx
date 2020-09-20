@@ -21,12 +21,19 @@ export const TodoAddField: React.FC<TodoAddField> = ({ placeholder }): ReactElem
     dispatch(fetchAddTodoItem(value));
   }
 
+  const handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  }
+
   return (
     <div className="todo__add-field">
       <input
         className="todo__add-field-input"
         name="todo"
         onChange={handleChange}
+        onKeyUp={handleKeyboard}
         placeholder={placeholder}
         type="text"
         value={value}
