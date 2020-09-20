@@ -2,15 +2,15 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { TodoBlock } from './components/TodoBlock';
+import { fetchTodoItems } from './store/todo/actionCreators';
 import { selectTodoItems } from './store/todo/selectors';
-import { thunkFetchTodoItems } from './store/todo/thunks';
 
 const App: React.FC = (): ReactElement => {
   const items = useSelector(selectTodoItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkFetchTodoItems());
+    dispatch(fetchTodoItems());
   }, [dispatch]);
 
   return (

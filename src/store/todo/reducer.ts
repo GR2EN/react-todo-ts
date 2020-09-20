@@ -24,7 +24,7 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
       }
     }
 
-    case TodoActionTypes.FETCH_ERROR: {
+    case TodoActionTypes.FETCH_TODO_ITEMS_ERROR: {
       return {
         ...state,
         items: [],

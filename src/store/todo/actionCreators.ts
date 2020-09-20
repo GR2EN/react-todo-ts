@@ -5,7 +5,7 @@ import { Todo } from './contracts/state';
 export enum TodoActionTypes {
   SET_TODO_ITEMS = 'todo/SET_TODO_ITEMS',
   FETCH_TODO_ITEMS = 'todo/FETCH_TODO_ITEMS',
-  FETCH_ERROR = 'todo/FETCH_ERROR',
+  FETCH_TODO_ITEMS_ERROR = 'todo/FETCH_ERROR',
 }
 
 export interface SetTodoItemsAction extends Action<TodoActionTypes> {
@@ -18,7 +18,7 @@ export interface FetchTodoItemsAction extends Action<TodoActionTypes> {
 }
 
 export interface FetchTodoItemsErrorAction extends Action<TodoActionTypes> {
-  type: TodoActionTypes.FETCH_ERROR,
+  type: TodoActionTypes.FETCH_TODO_ITEMS_ERROR,
 }
 
 export const setTodoItems = (payload: Todo[]): SetTodoItemsAction => ({
@@ -30,8 +30,8 @@ export const fetchTodoItems = (): FetchTodoItemsAction => ({
   type: TodoActionTypes.FETCH_TODO_ITEMS,
 })
 
-export const fetchError = (): FetchTodoItemsErrorAction => ({
-  type: TodoActionTypes.FETCH_ERROR,
+export const fetchTodoItemsError = (): FetchTodoItemsErrorAction => ({
+  type: TodoActionTypes.FETCH_TODO_ITEMS_ERROR,
 })
 
 export type TodoActions = SetTodoItemsAction | FetchTodoItemsAction | FetchTodoItemsErrorAction;
