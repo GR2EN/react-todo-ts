@@ -8,11 +8,10 @@ const initialTodoState: TodoState = {
 
 const todo = (state = initialTodoState, action: TodoActions): TodoState => {
   switch (action.type) {
-    case TodoActionTypes.SET_TODO_ITEMS: {
+    case TodoActionTypes.SET_LOADING_STATE: {
       return {
         ...state,
-        items: action.payload,
-        loadingState: LoadingState.LOADED,
+        loadingState: action.payload,
       }
     }
 
@@ -20,15 +19,14 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
       return {
         ...state,
         items: [],
-        loadingState: LoadingState.PENDING,
+        loadingState: LoadingState.PENDING
       }
     }
 
-    case TodoActionTypes.FETCH_TODO_ITEMS_ERROR: {
+    case TodoActionTypes.SET_TODO_ITEMS: {
       return {
         ...state,
         items: [],
-        loadingState: LoadingState.ERROR,
       }
     }
 

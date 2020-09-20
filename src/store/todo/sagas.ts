@@ -4,18 +4,19 @@ import TodoApi from '../../services/api/todoApi';
 import {
   addTodoItem,
   FetchAddTodoItemAction,
-  fetchTodoItemsError,
   setTodoItems,
+  setTodoLoadingState,
   TodoActionTypes,
 } from './actionCreators';
-import { Todo } from './contracts/state';
+import { LoadingState, Todo } from './contracts/state';
 
 function* fetchTodoItems() {
   try {
     const items = yield call(TodoApi.fetchTodoItems);
     yield put(setTodoItems(items));
+    yield put(setTodoLoadingState(LoadingState.LOADED));
   } catch (e) {
-    yield put(fetchTodoItemsError());
+    yield put(setTodoLoadingState(LoadingState.ERROR));
   }
 }
 
@@ -27,9 +28,9 @@ function* fetchAddTodoItemRequest({ payload }: FetchAddTodoItemAction) {
       completed: false,
     }
     const item = yield call(TodoApi.addTodoItem, data);
-    yield put(addTodoItem(item))
+    yield put(addTodoItem(item));
   } catch (e) {
-    console.log(e);
+    yield put(setTodoLoadingState(LoadingState.ERROR));
   }
 }
 

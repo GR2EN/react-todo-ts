@@ -1,13 +1,18 @@
 import { Action } from 'redux';
 
-import { Todo } from './contracts/state';
+import { LoadingState, Todo } from './contracts/state';
 
 export enum TodoActionTypes {
+  SET_LOADING_STATE = 'todo/SET_LOADING_STATE',
   SET_TODO_ITEMS = 'todo/SET_TODO_ITEMS',
   FETCH_TODO_ITEMS = 'todo/FETCH_TODO_ITEMS',
-  FETCH_TODO_ITEMS_ERROR = 'todo/FETCH_ERROR',
   FETCH_ADD_TODO_ITEM = 'todo/FETCH_ADD_TODO_ITEM',
   ADD_TODO_ITEM = 'todo/ADD_TODO_ITEM',
+}
+
+export interface SetTodoLoadingState extends Action<TodoActionTypes> {
+  type: TodoActionTypes.SET_LOADING_STATE;
+  payload: LoadingState;
 }
 
 export interface SetTodoItemsAction extends Action<TodoActionTypes> {
@@ -17,10 +22,6 @@ export interface SetTodoItemsAction extends Action<TodoActionTypes> {
 
 export interface FetchTodoItemsAction extends Action<TodoActionTypes> {
   type: TodoActionTypes.FETCH_TODO_ITEMS;
-}
-
-export interface FetchTodoItemsErrorAction extends Action<TodoActionTypes> {
-  type: TodoActionTypes.FETCH_TODO_ITEMS_ERROR;
 }
 
 export interface FetchAddTodoItemAction extends Action<TodoActionTypes> {
@@ -33,6 +34,11 @@ export interface AddTodoItemAction extends Action<TodoActionTypes> {
   payload: Todo;
 }
 
+export const setTodoLoadingState = (payload: LoadingState): SetTodoLoadingState => ({
+  type: TodoActionTypes.SET_LOADING_STATE,
+  payload,
+})
+
 export const setTodoItems = (payload: Todo[]): SetTodoItemsAction => ({
   type: TodoActionTypes.SET_TODO_ITEMS,
   payload,
@@ -40,10 +46,6 @@ export const setTodoItems = (payload: Todo[]): SetTodoItemsAction => ({
 
 export const fetchTodoItems = (): FetchTodoItemsAction => ({
   type: TodoActionTypes.FETCH_TODO_ITEMS,
-});
-
-export const fetchTodoItemsError = (): FetchTodoItemsErrorAction => ({
-  type: TodoActionTypes.FETCH_TODO_ITEMS_ERROR,
 });
 
 export const fetchAddTodoItem = (payload: string): FetchAddTodoItemAction => ({
@@ -57,8 +59,8 @@ export const addTodoItem = (payload: Todo): AddTodoItemAction => ({
 });
 
 export type TodoActions =
+  | SetTodoLoadingState
   | SetTodoItemsAction
   | FetchTodoItemsAction
-  | FetchTodoItemsErrorAction
   | FetchAddTodoItemAction
   | AddTodoItemAction;
