@@ -26,7 +26,7 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
     case TodoActionTypes.SET_TODO_ITEMS: {
       return {
         ...state,
-        items: [],
+        items: action.payload,
       }
     }
 
