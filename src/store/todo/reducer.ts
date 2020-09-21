@@ -12,32 +12,40 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
       return {
         ...state,
         loadingState: action.payload,
-      }
+      };
     }
 
     case TodoActionTypes.FETCH_TODO_ITEMS: {
       return {
         ...state,
         items: [],
-        loadingState: LoadingState.PENDING
-      }
+        loadingState: LoadingState.PENDING,
+      };
     }
 
     case TodoActionTypes.SET_TODO_ITEMS: {
       return {
         ...state,
         items: action.payload,
-      }
+      };
     }
 
     case TodoActionTypes.ADD_TODO_ITEM: {
       return {
         ...state,
         items: [...state.items, action.payload],
-      }
+      };
     }
 
-    default: return state;
+    case TodoActionTypes.DELETE_TODO_ITEM: {
+      return {
+        ...state,
+        items: [...state.items.filter((item) => item.id !== action.payload)],
+      };
+    }
+
+    default:
+      return state;
   }
 };
 
