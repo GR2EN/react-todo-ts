@@ -6,9 +6,11 @@ import {
   deleteTodoItem,
   FetchAddTodoItemAction,
   FetchDeleteTodoItemAction,
+  FetchUpdateTodoItemAction,
   setTodoItems,
   setTodoLoadingState,
   TodoActionTypes,
+  updateTodoItem,
 } from './actionCreators';
 import { LoadingState, Todo } from './contracts/state';
 
@@ -36,10 +38,19 @@ function* fetchAddTodoItemRequest({ payload }: FetchAddTodoItemAction) {
   }
 }
 
-function* fetchDeleteTodoItem({ payload }: FetchDeleteTodoItemAction) {
+function* fetchDeleteTodoItemRequest({ payload }: FetchDeleteTodoItemAction) {
   try {
     yield call(TodoApi.deleteTodoItem, payload);
     yield put(deleteTodoItem(payload));
+  } catch (e) {
+    yield put(setTodoLoadingState(LoadingState.ERROR));
+  }
+}
+
+function* fetchUpdateTodoItemRequest({ payload }: FetchUpdateTodoItemAction) {
+  try {
+    yield call(TodoApi.updateTodoItem, payload);
+    yield put(updateTodoItem(payload));
   } catch (e) {
     yield put(setTodoLoadingState(LoadingState.ERROR));
   }
@@ -52,5 +63,12 @@ export function* todoSaga() {
     TodoActionTypes.FETCH_ADD_TODO_ITEM,
     fetchAddTodoItemRequest
   );
-  yield takeLatest(TodoActionTypes.FETCH_DELETE_TODO_ITEM, fetchDeleteTodoItem);
+  yield takeLatest(
+    TodoActionTypes.FETCH_DELETE_TODO_ITEM,
+    fetchDeleteTodoItemRequest
+  );
+  yield takeLatest(
+    TodoActionTypes.FETCH_UPDATE_TODO_ITEM,
+    fetchUpdateTodoItemRequest
+  );
 }

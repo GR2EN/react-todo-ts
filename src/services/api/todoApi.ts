@@ -12,6 +12,10 @@ const TodoApi = {
   async deleteTodoItem(id: string): Promise<void> {
     return axios.delete(`/todo/${id}`);
   },
+  async updateTodoItem(todo: Todo): Promise<void> {
+    const { id, text, completed } = todo;
+    return axios.put(`/todo/${id}`, { text, completed });
+  },
 };
 
 export default TodoApi;

@@ -10,6 +10,8 @@ export enum TodoActionTypes {
   ADD_TODO_ITEM = 'todo/ADD_TODO_ITEM',
   FETCH_DELETE_TODO_ITEM = 'todo/FETCH_DELETE_TODO_ITEM',
   DELETE_TODO_ITEM = 'todo/DELETE_TODO_ITEM',
+  FETCH_UPDATE_TODO_ITEM = 'todo/FETCH_UPDATE_TODO_ITEM',
+  UPDATE_TODO_ITEM = 'todo/UPDATE_TODO_ITEM',
 }
 
 export interface SetTodoLoadingState extends Action<TodoActionTypes> {
@@ -44,6 +46,16 @@ export interface FetchDeleteTodoItemAction extends Action<TodoActionTypes> {
 export interface DeleteTodoItemAction extends Action<TodoActionTypes> {
   type: TodoActionTypes.DELETE_TODO_ITEM;
   payload: string;
+}
+
+export interface FetchUpdateTodoItemAction extends Action<TodoActionTypes> {
+  type: TodoActionTypes.FETCH_UPDATE_TODO_ITEM;
+  payload: Todo;
+}
+
+export interface UpdateTodoItemAction extends Action<TodoActionTypes> {
+  type: TodoActionTypes.UPDATE_TODO_ITEM;
+  payload: Todo;
 }
 
 export const setTodoLoadingState = (
@@ -84,6 +96,18 @@ export const deleteTodoItem = (payload: string): DeleteTodoItemAction => ({
   payload,
 });
 
+export const fetchUpdateTodoItem = (
+  payload: Todo
+): FetchUpdateTodoItemAction => ({
+  type: TodoActionTypes.FETCH_UPDATE_TODO_ITEM,
+  payload,
+});
+
+export const updateTodoItem = (payload: Todo): UpdateTodoItemAction => ({
+  type: TodoActionTypes.UPDATE_TODO_ITEM,
+  payload,
+});
+
 export type TodoActions =
   | SetTodoLoadingState
   | SetTodoItemsAction
@@ -91,4 +115,6 @@ export type TodoActions =
   | FetchAddTodoItemAction
   | AddTodoItemAction
   | FetchDeleteTodoItemAction
-  | DeleteTodoItemAction;
+  | DeleteTodoItemAction
+  | FetchUpdateTodoItemAction
+  | UpdateTodoItemAction;

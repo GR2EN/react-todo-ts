@@ -44,6 +44,22 @@ const todo = (state = initialTodoState, action: TodoActions): TodoState => {
       };
     }
 
+    case TodoActionTypes.UPDATE_TODO_ITEM: {
+      const updatedItems = state.items.map((item) => {
+        if (action.payload.id !== item.id) {
+          return item;
+        }
+
+        return {
+          ...action.payload,
+        };
+      });
+      return {
+        ...state,
+        items: [...updatedItems],
+      };
+    }
+
     default:
       return state;
   }
