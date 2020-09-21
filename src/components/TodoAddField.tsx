@@ -9,23 +9,26 @@ export interface TodoAddField {
   placeholder: string;
 }
 
-export const TodoAddField: React.FC<TodoAddField> = ({ placeholder }): ReactElement => {
+export const TodoAddField: React.FC<TodoAddField> = ({
+  placeholder,
+}): ReactElement => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
-  }
+  };
 
   const handleSubmit = () => {
+    setValue('');
     dispatch(fetchAddTodoItem(value));
-  }
+  };
 
   const handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSubmit();
     }
-  }
+  };
 
   return (
     <div className="todo__add-field">
@@ -44,5 +47,5 @@ export const TodoAddField: React.FC<TodoAddField> = ({ placeholder }): ReactElem
         </SvgIcon>
       </IconButton>
     </div>
-  )
-}
+  );
+};
