@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -14,7 +14,7 @@ export enum AlertType {
 
 export interface Alert {
   severity?: AlertType;
-  children: string;
+  children: ReactNode;
 }
 
 export const Alert: React.FC<Alert> = ({ children, severity }): ReactElement => (

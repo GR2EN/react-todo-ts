@@ -4,6 +4,7 @@
   bottom: 24px;
   width: 480px;
   display: flex;
+  align-items: center;
   padding: 6px 16px;
   font-size: 0.875rem;
   border-radius: 4px;
@@ -13,13 +14,9 @@
   &__icon {
     display: flex;
     opacity: 0.9;
-    padding: 7px 0;
+    padding: 6px 0;
     font-size: 22px;
     margin-right: 12px;
-  }
-
-  &__message {
-    padding: 11px 0;
   }
 
   &--error {
