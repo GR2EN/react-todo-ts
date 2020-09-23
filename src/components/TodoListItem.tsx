@@ -18,12 +18,12 @@ const TodoListItem: React.FC<Todo> = ({
 }): ReactElement => {
   const dispatch = useDispatch();
 
-  const handleToggleCompleted = () => {
+  const handleToggleCompleted = (): void => {
     const todo = { id, text, completed: !completed };
     dispatch(fetchUpdateTodoItem(todo));
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     dispatch(fetchDeleteTodoItem(id));
   };
 

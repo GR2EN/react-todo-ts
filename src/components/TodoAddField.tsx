@@ -15,16 +15,16 @@ export const TodoAddField: React.FC<TodoAddField> = ({
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
 
-  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.FormEvent<HTMLInputElement>):void => {
     setValue(event.currentTarget.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = ():void => {
     setValue('');
     dispatch(fetchAddTodoItem(value));
   };
 
-  const handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>):void => {
     if (event.key === 'Enter') {
       handleSubmit();
     }

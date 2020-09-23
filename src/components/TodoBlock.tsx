@@ -16,8 +16,12 @@ export const TodoBlock: React.FC<TodoBlock> = ({ title, items }): ReactElement =
       <TodoAddField placeholder="What about another great thing?.." />
       <ul className="todo__list">
         {items.map(({ id, text, completed }) => (
-          <TodoListItem completed={completed} id={id} key={id}
-            text={text} />
+          <TodoListItem
+            completed={completed}
+            id={id}
+            key={id}
+            text={text}
+          />
         ))}
       </ul>
     </div>

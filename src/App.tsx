@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { TodoBlock } from './components/TodoBlock';
 import { fetchTodoItems } from './store/todo/actionCreators';
-import { selectTodoItems } from './store/todo/selectors';
+import { selectTodoItems, selectTodoItemsIsLoading } from './store/todo/selectors';
 
 const App: React.FC = (): ReactElement => {
   const items = useSelector(selectTodoItems);
+  const loading = useSelector(selectTodoItemsIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +17,10 @@ const App: React.FC = (): ReactElement => {
   return (
     <div className="container">
       <main className="content">
-        <TodoBlock items={items} title="Great things" />
+        {loading
+          ? <>Loading...</>
+          : <TodoBlock items={items} title="Great things" />
+        }
       </main>
     </div>
   );
