@@ -17,3 +17,21 @@ body {
     padding: 16px;
   }
 }
+
+.quote {
+  position: relative;
+  margin-left: 2rem;
+  padding: 1rem;
+  font-style: italic;
+  color: rgba(16, 20, 25, 0.4);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 3px;
+    height: calc(100% - 16px);
+    background-color: rgba(16, 20, 25, 0.1);
+  }
+}

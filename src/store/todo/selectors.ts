@@ -18,4 +18,7 @@ export const selectTodoItemsIsLoaded = (state: RootState): boolean =>
 export const selectTodoItemsError = (state: RootState): boolean =>
   selectLoadingState(state) === LoadingState.ERROR;
 
-  export const selectTodoItems = createSelector(selectTodo, (todo) => todo.items);
+export const selectTodoItems = createSelector(selectTodo, (todo) => todo.items);
+
+export const selectTodoItemsIsEmpty = (state: RootState): boolean =>
+  selectTodoItems(state).length === 0;
