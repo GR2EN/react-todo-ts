@@ -22,7 +22,7 @@ export const TodoBlock: React.FC<TodoBlock> = ({
       <h4 className="todo__title">{title}</h4>
       <div
         className="todo__content"
-        style={{ paddingBottom: isEmpty ? '12px' : '' }}
+        style={{ paddingBottom: isEmpty ? 12 : 0 }}
       >
         <TodoAddField placeholder="Add beginning..." />
         {isEmpty ? (

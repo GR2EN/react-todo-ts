@@ -9,6 +9,9 @@ export const selectTodo = (state: RootState): TodoState => state.todo;
 export const selectLoadingState = (state: RootState): LoadingState =>
   selectTodo(state).loadingState;
 
+export const selectTodoItemsIsNeverLoading = (state: RootState): boolean =>
+  selectLoadingState(state) === LoadingState.NEVER;
+
 export const selectTodoItemsIsLoading = (state: RootState): boolean =>
   selectLoadingState(state) === LoadingState.PENDING;
 
