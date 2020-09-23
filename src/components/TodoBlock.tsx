@@ -1,11 +1,16 @@
 
 import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
 import { Todo } from '../store/todo/contracts/state';
 import { selectTodoItemsIsEmpty } from '../store/todo/selectors';
+import { toggleUiMode } from '../store/ui/actionCreators';
+import { selectUiModeIsDark } from '../store/ui/selectors';
+import { IconButton } from './IconButton';
+import DarkModeIcon from './icons/DarkModeIcon';
+import LightModeIcon from './icons/LightModeIcon';
 import { TodoAddField } from './TodoAddField';
 import TodoListItem from './TodoListItem';
 
@@ -23,6 +28,12 @@ export const TodoBlock: React.FC<TodoBlock> = ({
     hidden: { opacity: 0, transition: { when: 'afterChildren' } },
   }
   const isEmpty = useSelector(selectTodoItemsIsEmpty);
+  const uiModeIsDark = useSelector(selectUiModeIsDark);
+  const dispatch = useDispatch();
+
+  const handleToggleUiMode = (): void => {
+    dispatch(toggleUiMode());
+  }
 
   return (
     <AnimateSharedLayout>
@@ -33,7 +44,12 @@ export const TodoBlock: React.FC<TodoBlock> = ({
         initial="hidden"
         variants={variants}
       >
-        <h4 className="todo__title">{title}</h4>
+        <div className="todo__header">
+          <h4 className="todo__title">{title}</h4>
+          <IconButton color="primary" onClick={handleToggleUiMode}>
+            {uiModeIsDark ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
+        </div>
         <div
           className="todo__content"
           style={{ paddingBottom: isEmpty ? 12 : 0 }}

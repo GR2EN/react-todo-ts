@@ -2,10 +2,19 @@
   width: 480px;
   margin-bottom: 24px;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 4px;
+    margin-bottom: 8px;
+  }
+
   &__title {
     font-size: 18px;
     font-weight: 400;
-    padding: 12px 16px;
+    padding: 12px 0;
     color: rgba(16, 20, 25, 0.8);
   }
 
