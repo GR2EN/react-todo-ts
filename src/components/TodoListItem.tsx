@@ -19,6 +19,10 @@ const TodoListItem: React.FC<Todo> = ({
   text,
   completed,
 }): ReactElement => {
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  }
   const dispatch = useDispatch();
 
   const handleToggleCompleted = (): void => {
@@ -32,12 +36,13 @@ const TodoListItem: React.FC<Todo> = ({
 
   return (
     <motion.li
-      animate={{ opacity: 1 }}
+      animate="visible"
       className={classNames('todo__list-item', {
         'todo__list-item--completed': completed,
       })}
-      exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
+      exit="hidden"
+      initial="hidden"
+      variants={variants}
     >
       <div className="todo__list-item-icon">
         <IconButton color="primary" onClick={handleToggleCompleted}>

@@ -2,7 +2,7 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Todo } from '../store/todo/contracts/state';
 import { selectTodoItemsIsEmpty } from '../store/todo/selectors';
@@ -18,42 +18,45 @@ export const TodoBlock: React.FC<TodoBlock> = ({
   title,
   items,
 }): ReactElement => {
+  const variants = {
+    visible: { opacity: 1, transition: { when: 'beforeChildren', staggerChildren: 0.3 } },
+    hidden: { opacity: 0, transition: { when: 'afterChildren' } },
+  }
   const isEmpty = useSelector(selectTodoItemsIsEmpty);
 
   return (
     <motion.div
-      animate={{ opacity: 1 }}
+      animate="visible"
       className="todo"
-      initial={{ opacity: 0 }}
+      exit="hidden"
+      initial="hidden"
+      variants={variants}
     >
       <h4 className="todo__title">{title}</h4>
-      <AnimateSharedLayout>
-        <motion.div
-          className="todo__content"
-          layout
-          style={{ paddingBottom: isEmpty ? 12 : 0 }}
-        >
-          <TodoAddField placeholder="Add beginning..." />
-          {isEmpty ? (
-            <p className="quote">
-              &quot;Big things have small beginnings.&quot; - Prometheus
-            </p>
-          ) : (
-            <ul className="todo__list">
-              <AnimatePresence>
-                {items.map(({ id, text, completed }) => (
-                  <TodoListItem
-                    completed={completed}
-                    id={id}
-                    key={id}
-                    text={text}
-                  />
-                ))}
-              </AnimatePresence>
-            </ul>
-          )}
-        </motion.div>
-      </AnimateSharedLayout>
+      <div
+        className="todo__content"
+        style={{ paddingBottom: isEmpty ? 12 : 0 }}
+      >
+        <TodoAddField placeholder="Add beginning..." />
+        {isEmpty ? (
+          <p className="quote">
+            &quot;Big things have small beginnings.&quot; - Prometheus
+          </p>
+        ) : (
+          <ul className="todo__list">
+            <AnimatePresence>
+              {items.map(({ id, text, completed }) => (
+                <TodoListItem
+                  completed={completed}
+                  id={id}
+                  key={id}
+                  text={text}
+                />
+              ))}
+            </AnimatePresence>
+          </ul>
+        )}
+      </div>
     </motion.div>
   );
 };
