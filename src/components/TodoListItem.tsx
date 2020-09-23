@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
 import {
   fetchDeleteTodoItem,
@@ -28,10 +29,13 @@ const TodoListItem: React.FC<Todo> = ({
   };
 
   return (
-    <li
+    <motion.li
+      animate={{ opacity: 1 }}
       className={classNames('todo__list-item', {
         'todo__list-item--completed': completed,
       })}
+      exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
     >
       <div className="todo__list-item-icon">
         <IconButton color="primary" onClick={handleToggleCompleted}>
@@ -51,7 +55,7 @@ const TodoListItem: React.FC<Todo> = ({
           </SvgIcon>
         </IconButton>
       </div>
-    </li>
+    </motion.li>
   );
 };
 
