@@ -10,8 +10,10 @@ import {
   selectTodoItemsError,
   selectTodoItemsIsLoading,
 } from './store/todo/selectors';
+import { selectUiModeIsDark } from './store/ui/selectors';
 
 const App: React.FC = (): ReactElement => {
+  const uiModeIsDark = useSelector(selectUiModeIsDark);
   const items = useSelector(selectTodoItems);
   const loading = useSelector(selectTodoItemsIsLoading);
   const error = useSelector(selectTodoItemsError);
@@ -19,7 +21,13 @@ const App: React.FC = (): ReactElement => {
 
   useEffect(() => {
     dispatch(fetchTodoItems());
-  }, [dispatch]);
+
+    if(uiModeIsDark) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+  }, [dispatch, uiModeIsDark]);
 
   return (
     <div className="container">
