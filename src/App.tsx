@@ -9,12 +9,10 @@ import {
   selectTodoItems,
   selectTodoItemsError,
   selectTodoItemsIsLoading,
-  selectTodoItemsIsNeverLoading,
 } from './store/todo/selectors';
 
 const App: React.FC = (): ReactElement => {
   const items = useSelector(selectTodoItems);
-  const neverLoading = useSelector(selectTodoItemsIsNeverLoading);
   const loading = useSelector(selectTodoItemsIsLoading);
   const error = useSelector(selectTodoItemsError);
   const dispatch = useDispatch();
@@ -25,12 +23,12 @@ const App: React.FC = (): ReactElement => {
 
   return (
     <div className="container">
-      {loading || neverLoading ? (
+      {loading ? (
         <TodoLoadingBlock />
       ) : (
         <TodoBlock items={items} title="Great things" />
       )}
-      {error && <Alert severity={AlertType.error}>Что-то пошло не так <span aria-label="" role="img">🙁</span></Alert>}
+      {error && <Alert severity={AlertType.error}>Что-то пошло не так</Alert>}
     </div>
   );
 };
