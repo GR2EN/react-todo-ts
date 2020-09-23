@@ -20,8 +20,10 @@ export const TodoAddField: React.FC<TodoAddField> = ({
   };
 
   const handleSubmit = ():void => {
-    setValue('');
-    dispatch(fetchAddTodoItem(value));
+    if (value.length !== 0) {
+      dispatch(fetchAddTodoItem(value));
+      setValue('');
+    }
   };
 
   const handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>):void => {
