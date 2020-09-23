@@ -25,4 +25,10 @@
       background-color: rgba(16, 20, 25, 0.04);
     }
   }
+
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+    color: rgba(16, 20, 25, 0.4);
+  }
 }
