@@ -22,13 +22,11 @@ const App: React.FC = (): ReactElement => {
 
   return (
     <div className="container">
-      <main className="content">
-        {loading || neverLoading ? (
-          <TodoLoadingBlock />
-        ) : (
-          <TodoBlock items={items} title="Great things" />
-        )}
-      </main>
+      {loading || neverLoading ? (
+        <TodoLoadingBlock />
+      ) : (
+        <TodoBlock items={items} title="Great things" />
+      )}
     </div>
   );
 };

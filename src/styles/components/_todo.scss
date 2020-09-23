@@ -59,6 +59,27 @@
   }
 
   &__list {
+    max-height: calc(100vh - 256px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 3px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: #e7e7e7;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(46, 134, 171, 0.6);
+    }
+
     &-item {
       $self: &;
       display: flex;
@@ -102,6 +123,6 @@
 
 @media (max-width: 767px) {
   .todo {
-    width: 100%;
+    width: calc(100vw - 32px);
   }
 }
