@@ -1,0 +1,45 @@
+.alert {
+  z-index: 1100;
+  position: absolute;
+  bottom: 24px;
+  width: 480px;
+  display: flex;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+
+  &__icon {
+    display: flex;
+    opacity: 0.9;
+    padding: 7px 0;
+    font-size: 22px;
+    margin-right: 12px;
+  }
+
+  &__message {
+    padding: 11px 0;
+  }
+
+  &--error {
+    color: rgb(97, 26, 21);
+    background-color: rgb(253, 236, 234);
+  }
+
+  &--info {
+    color: rgb(13, 60, 97);
+    background-color: rgb(232, 244, 253);
+  }
+
+  &--success {
+    color: rgb(30, 70, 32);
+    background-color: rgb(237, 247, 237);
+  }
+}
+
+@media (max-width: 767px) {
+  .alert {
+    width: calc(100vw - 32px);
+  }
+}

@@ -97,24 +97,12 @@
         color: rgba(16, 20, 25, 0.92);
       }
 
-      .svg-icon-completed {
-        display: none;
-      }
-
       &--completed {
         background-color: rgba(0, 0, 0, 0.04);
 
         #{$self}-text {
           color: rgba(16, 20, 25, 0.4);
           text-decoration: line-through;
-        }
-
-        .svg-icon-completed {
-          display: block;
-        }
-
-        .svg-icon-incompleted {
-          display: none;
         }
       }
     }
