@@ -12,7 +12,7 @@ import { Todo } from '../store/todo/contracts/state';
 import { IconButton } from './IconButton';
 import CompletedIcon from './icons/CompletedIcon';
 import DeleteIcon from './icons/DeleteIcon';
-import IncompletedIcon from './icons/IncompletedIcon';
+import UncompletedIcon from './icons/UncompletedIcon';
 
 const TodoListItem: React.FC<Todo> = ({
   id,
@@ -46,7 +46,7 @@ const TodoListItem: React.FC<Todo> = ({
     >
       <div className="todo__list-item-icon">
         <IconButton color="primary" onClick={handleToggleCompleted}>
-          {completed ? <CompletedIcon /> : <IncompletedIcon />}
+          {completed ? <CompletedIcon /> : <UncompletedIcon />}
         </IconButton>
       </div>
       <p className="todo__list-item-text">{text}</p>
